@@ -1,0 +1,43 @@
+.grid_task{
+  display: grid;
+  grid-template-columns: 2fr 1fr; 
+  align-items: center;
+  transition: all 0.3s;
+}
+
+.task{
+  background:#283 !important;
+  color: white !important;
+  transition: all 0.3s !important;
+}
+
+
+.task:hover{
+  padding: 10px 0;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.8);
+}
+
+.togglebtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  margin-top: auto;
+  border-radius: 5px;
+}
+
+.btn{
+  margin-top: 0px;
+  background: white;
+  padding: 25px;
+  border: solid #8bc34a 3px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+/* 
+.btn:hover{
+  background: greenyellow;
+  border:solid #a33131 3px;
+} */

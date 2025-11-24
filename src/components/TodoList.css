@@ -1,0 +1,20 @@
+.button-group{
+    text-align: center;
+    direction: rtl;
+}
+.toggle-btn{
+    display: inline-block;
+    margin: 0;
+    background-color: #283532;
+    color: white;
+    border: 1px solid yellowgreen;
+    cursor: pointer;
+    padding: 30px;
+    font-size: large;
+    border-radius: 3px;
+    transition: all 0.5s;
+}
+
+.toggle-btn:hover{
+    background: #283;
+}
