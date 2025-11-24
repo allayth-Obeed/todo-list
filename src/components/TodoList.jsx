@@ -26,9 +26,13 @@ const TodoList = () => {
       details:detailsInput,
       isCompleted:false
     }
-    setTodos([...todos,newTodo])
+    const updatedTodos = [...todos,newTodo]
+    setTodos(updatedTodos)
+    localStorage.setItem("todos",JSON.stringify(todos));
     setTitleInput("")
   }
+  // const storageTodos = JSON.parse(localStorage.getItem("todos"))
+  // setTodos(storageTodos);
   return (
     <Container maxWidth="md">
   <Card>
