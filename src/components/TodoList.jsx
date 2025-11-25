@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from "uuid";
 import { TodosContext } from '../context/todosContext.js';
-import {useContext} from "react";
+import {useContext , useEffect} from "react";
 
 
 
@@ -19,6 +19,10 @@ const TodoList = () => {
   const todosjsx = todos.map((t)=>{
     return <Todo key={t.id} todo={t}/>
   })
+  useEffect(()=>{
+    const storageTodos = JSON.parse(localStorage.getItem("todos"))
+    setTodos(storageTodos);
+  },[]);
   function handleAddClick(){
     const newTodo = {
       id:uuidv4(),
@@ -27,12 +31,11 @@ const TodoList = () => {
       isCompleted:false
     }
     const updatedTodos = [...todos,newTodo]
-    setTodos(updatedTodos)
+    setTodos(updatedTodos);
     localStorage.setItem("todos",JSON.stringify(todos));
-    setTitleInput("")
+    setTitleInput("");
   }
-  // const storageTodos = JSON.parse(localStorage.getItem("todos"))
-  // setTodos(storageTodos);
+  
   return (
     <Container maxWidth="md">
   <Card>

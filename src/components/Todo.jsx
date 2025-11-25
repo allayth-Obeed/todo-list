@@ -26,6 +26,7 @@ const Todo = ({ todo }) => {
       return t;
     });
     setTodos(updatedTodos);
+    localStorage.setItem("todos",JSON.stringify(updatedTodos));
   }
   function handleDeleteDialog() {
     setShowDeleteDialog(true);
@@ -42,6 +43,7 @@ const Todo = ({ todo }) => {
       return t.id != todo.id;
     });
     setTodos(updatedTodos);
+    localStorage.setItem("todos",JSON.stringify(updatedTodos));
   }
   function handleEditConfirm(){
     
@@ -54,6 +56,7 @@ const Todo = ({ todo }) => {
     });
     setTodos(updatedTodos);
     setShowEditDialog(false);
+    localStorage.setItem("todos",JSON.stringify(updatedTodos));
   }
   return (
     <>
