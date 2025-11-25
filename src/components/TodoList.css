@@ -1,20 +1,20 @@
-.button-group{
-    text-align: center;
-    direction: rtl;
+/* .button-group{
+    text-align: center ip !important;
+    direction: rtl !important;
 }
 .toggle-btn{
-    display: inline-block;
-    margin: 0;
-    background-color: #283532;
-    color: white;
-    border: 1px solid yellowgreen;
+    display: inline-block !important;
+    margin: 0 !important;
+    background-color: #283532 !important;
+    color: white !important;
+    border: 1px solid yellowgreen !important;
     cursor: pointer;
-    padding: 30px;
-    font-size: large;
-    border-radius: 3px;
-    transition: all 0.5s;
+    padding: 30px !important;
+    font-size: large !important;
+    border-radius: 3px !important;
+    transition: all 0.5s !important;
 }
 
 .toggle-btn:hover{
-    background: #283;
-}
+    background: #283 !important;
+} */

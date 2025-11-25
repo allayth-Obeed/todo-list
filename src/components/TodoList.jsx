@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import { v4 as uuidv4 } from "uuid";
 import { TodosContext } from '../context/todosContext.js';
 import {useContext , useEffect} from "react";
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
 
 
@@ -14,15 +16,33 @@ import {useContext , useEffect} from "react";
 
 const TodoList = () => {
   const {todos,setTodos}= useContext(TodosContext);
+  const [displayedTodosType , setDisplayedTodosType]= useState("all");
   const [titleInput, setTitleInput]= useState("");
   const [detailsInput, setDetails] = useState("");
-  const todosjsx = todos.map((t)=>{
+  const completedTodos = todos.filter((t)=>{
+    return t.isCompleted;
+  });
+  const notCompletedTodos = todos.filter((t)=>{
+    return !t.isCompleted;
+  });
+  let todosToBeRendered = todos
+  if(displayedTodosType=="completed"){
+    todosToBeRendered = completedTodos
+  }else if(displayedTodosType=="active"){
+    todosToBeRendered = notCompletedTodos;
+  }else {
+    todosToBeRendered = todos
+  }
+  const todosjsx = todosToBeRendered.map((t)=>{
     return <Todo key={t.id} todo={t}/>
-  })
+  });
   useEffect(()=>{
     const storageTodos = JSON.parse(localStorage.getItem("todos"))
     setTodos(storageTodos);
   },[]);
+  function changeDisplayedType(e){
+    setDisplayedTodosType(e.target.value);
+  }
   function handleAddClick(){
     const newTodo = {
       id:uuidv4(),
@@ -32,7 +52,7 @@ const TodoList = () => {
     }
     const updatedTodos = [...todos,newTodo]
     setTodos(updatedTodos);
-    localStorage.setItem("todos",JSON.stringify(todos));
+    localStorage.setItem("todos",JSON.stringify(updatedTodos));
     setTitleInput("");
   }
   
@@ -42,11 +62,29 @@ const TodoList = () => {
     <CardContent>
       <Typography variant="h2" style={{textAlign:"center"}}>My Todo List</Typography>
       <Divider style={{border:"2px solid yellowgreen",borderRadius:"2px" }} />
-      <div className="button-group">
-        <button className="toggle-btn">All</button>
-        <button className="toggle-btn">Completed</button>
-        <button className="toggle-btn">Active</button>
-      </div>
+          <ToggleButtonGroup
+    sx={{
+      display:"flex",
+      justifyContent:"center"
+    }}
+    color="primary"
+    value={displayedTodosType}
+    onChange={changeDisplayedType}
+    exclusive
+    aria-label="todo filter"
+  >
+    <ToggleButton value="all">
+      All
+    </ToggleButton>
+    <ToggleButton value="completed">
+      Completed
+    </ToggleButton>
+    <ToggleButton value="active">
+      Active
+    </ToggleButton>
+  </ToggleButtonGroup>
+
+
       {todosjsx}
       <div
         style={{ display:"grid",
@@ -70,7 +108,7 @@ const TodoList = () => {
         onChange={(e)=>{
           setTitleInput(e.target.value)
         }} variant="outlined" />
-        <TextField id="outlined-basic" label="Add details" 
+        <TextField label="Add details" 
         value={detailsInput}
         onChange={(e)=>{
           setDetails(e.target.value)
