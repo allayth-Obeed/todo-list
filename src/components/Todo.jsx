@@ -133,8 +133,8 @@ const Todo = ({ todo }) => {
         <CardContent>
           <div className="grid_task">
             <div>
-              <Typography variant="h4">{todo.title}</Typography>
-              <Typography variant="h5">{todo.details}</Typography>
+              <Typography variant="h4" sx={{textDecoration:todo.isCompleted ? "line-through" : "",}}>{todo.title}</Typography>
+              <Typography variant="h5" sx={{textDecoration:todo.isCompleted ? "line-through" : "",}}>{todo.details}</Typography>
             </div>
             <div className="togglebtn">
               <FaCheck

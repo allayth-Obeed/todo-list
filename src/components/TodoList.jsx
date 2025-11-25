@@ -58,7 +58,10 @@ const TodoList = () => {
   
   return (
     <Container maxWidth="md">
-  <Card>
+  <Card sx={{minWidth:275}} style={{
+    maxHeight:"80vh",
+    overflow:"scroll"
+  }}>
     <CardContent>
       <Typography variant="h2" style={{textAlign:"center"}}>My Todo List</Typography>
       <Divider style={{border:"2px solid yellowgreen",borderRadius:"2px" }} />
@@ -97,10 +100,12 @@ const TodoList = () => {
         onClick={()=>{
           handleAddClick();
         }}
+        disabled={titleInput.length==0 || detailsInput.length==0}
         style={{
-          background:"green",
+          background:"primary",
           marginTop:"8px",
-          height:"80%"
+          height:"80%",
+          
         }}
         >Add</Button>
         <TextField id="outlined-basic" label="Add Task" 
