@@ -53,7 +53,7 @@ const TodoList = () => {
     if (storageTodos) {
       setTodos(storageTodos);
     }
-  }, []);
+  }, [setTodos]);
 
   function changeDisplayedType(e) {
     setDisplayedTodosType(e.target.value);

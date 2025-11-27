@@ -4,6 +4,7 @@ import { TodosContext } from "./context/todosContext.js";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import MySnackBar from './components/MySnackBar.js';
 
 const initial = [
   {
@@ -42,6 +43,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <div style={{ padding: "20px" }}>
+        <MySnackBar />
         <TodosContext.Provider value={{ todos, setTodos }}>
           <TodoList />
         </TodosContext.Provider>
